@@ -1,7 +1,7 @@
 /* --------- GLOBAL --------- */
 body {
   font-family: "Segoe UI", sans-serif;
-  background-color: #e0f7fa;
+  background-color: #f5f5f5;
   margin: 0;
   padding: 0;
 }
@@ -9,48 +9,70 @@ body {
 header {
   text-align: center;
   padding: 20px;
-  background-color: #004d40;
+  background-color: #002f3e;
   color: white;
 }
 
 h1 {
-  margin-bottom: 10px;
+  margin: 0;
+  font-size: 2rem;
 }
 
 main {
+  overflow-x: auto;
   padding: 20px;
 }
 
 footer {
   text-align: center;
   padding: 10px;
-  background-color: #004d40;
+  background-color: #002f3e;
   color: white;
-  position: relative;
-  bottom: 0;
-  width: 100%;
+  font-size: 0.9em;
 }
 
-/* --------- CONTENEDOR MALLA --------- */
-#malla-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 15px;
+/* --------- CONTENEDOR DE SEMESTRES --------- */
+.semestres-container {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+/* --------- CADA COLUMNA DE SEMESTRE --------- */
+.semestre {
+  flex: 0 0 auto;
+  width: 200px;
+  background-color: #ffffff;
   padding: 10px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 6px rgba(0,0,0,0.1);
 }
 
-/* --------- CUADROS DE RAMOS --------- */
-.ramo {
-  padding: 15px;
-  border-radius: 10px;
-  font-weight: bold;
+.semestre h2 {
   text-align: center;
+  font-size: 1rem;
+  background-color: #002f3e;
+  color: white;
+  padding: 6px 0;
+  border-radius: 5px;
+  margin-top: 0;
+}
+
+/* --------- RAMO --------- */
+.ramo {
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.85rem;
   cursor: pointer;
   opacity: 0.4;
   pointer-events: none;
   transition: all 0.3s ease;
   border: 2px solid transparent;
-  box-shadow: 1px 1px 6px rgba(0,0,0,0.1);
 }
 
 .ramo.desbloqueado {
@@ -61,7 +83,7 @@ footer {
 
 .ramo.aprobado {
   text-decoration: line-through;
-  background-color: #a5d6a7 !important;
+  background-color: #c8e6c9 !important;
   color: #1b5e20;
   border-color: #1b5e20;
 }
@@ -103,9 +125,13 @@ footer {
 }
 
 /* --------- RESPONSIVE --------- */
-@media (max-width: 600px) {
-  #malla-container {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+@media (max-width: 800px) {
+  .semestres-container {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .semestre {
+    min-width: 180px;
   }
 }
-
